@@ -34,7 +34,7 @@ void main(void)
     /* Initialize I/O and Peripherals for application */
     InitApp();
     
-    GO_DONE = 0x01; // Comienza la conversion con el ADC
+    GO_DONE = 1; // Comienza la conversion con el ADC
     // Bucle infinito
     while(1){
         retardo=50;        // Cargamos este registro con 50 (equivale a 500 ms)
@@ -42,14 +42,14 @@ void main(void)
             // Esperamos que el ADC termine de convertir
             retardo--;      // Decrementamos el registro
             if(retardo == 0){
-                ADRESL = 0x00;
-                ADRESH = 0x00;
+                ADRESL = 0;
+                ADRESH = 0;
                 break;          // Si llego a cero salimos y reseteamos los registros (ERROR)
             }
             __delay_ms(10); // Sino esperamos 10 ms
         }
         //SLEEP();
-        GO_DONE = 0x01; // Volvemos a habilitar el ADC.
+        GO_DONE = 1; // Volvemos a habilitar el ADC.
         if(ADRESH > 2){
             // Preguntamos si hay un uno en la pata GPIO4 que corresponden a las barreras infrarrojas
             if(GP4){
