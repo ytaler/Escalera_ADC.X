@@ -17,8 +17,8 @@
 oscillator configurations and to compiler documentation for macro details. */
 void ConfigureOscillator(void)
 {
-    RP0 = 1;         // Cambiamos de banco al banco 1
+    RP0 = 0x01;         // Cambiamos de banco al banco 1
     OSCCAL = 0x80;      // Establecemos la frecuencia a la frec central.
     OPTION_REG = 0x80;  // Configuramos el timer
-    RP0 = 0;         // Volvemos al banco 0
+    RP0 = 0x00;         // Volvemos al banco 0
 }
