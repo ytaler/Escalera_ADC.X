@@ -20,6 +20,6 @@
 
 void interrupt isr(void)
 {
-;
+
 }
 #endif
